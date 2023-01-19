@@ -106,7 +106,7 @@ export const addOnValues = [
         name: "Customizable profile",
         discription: "Custom theme on your profile",
         price: "+$20/yr",
-        figure: 20,
+        figure: 50,
         on: false
     }
 ]

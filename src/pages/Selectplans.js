@@ -52,6 +52,8 @@ const Selectplans = () => {
 
   }
 
+  
+
 
   // Save the selected element to an Array and Localstorage
   const arraypush = (figure) => {

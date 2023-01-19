@@ -12,40 +12,41 @@ const Addons = () => {
   const [arr] = useState([])
   const navigate = useNavigate()
 
-  arr.length = 2
+  // arr.length = 2
 
 
 
   const toggleCheckbox = (id) => {
     console.log(id);
 
-    
-    // const {name, value, type, checked} = event.target
 
     setAllvalues(items => {
       return items.map(newItems => {
         if(newItems.id === id){
-          return {...newItems, on: !newItems.on }
+          return {...newItems, on: !newItems.on , arr: arr.push(!newItems.on, newItems.figure) }
         } else {
           return newItems
         }
       })
     })
-
   }
   
+  console.log(arr);
+  // if(newItems.on === true){
+  //   return {...newItems, ne: console.log(newItems.on, newItems.figure)}
+  // } 
 
   // Save the selected element to an Array and Localstorage
   const arraypush = (figure) => {
 
-    console.log(setAllvalues())
-    arr.push(figure)
+    // console.log(allValues);
+    // arr.push(figure)
 
     localStorage.setItem('selectedValue', JSON.stringify(arr))
   }  
   
 
-
+  // Go back
   const handleBack = (event) => {
 
     event.preventDefault()
