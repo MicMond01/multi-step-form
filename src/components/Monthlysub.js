@@ -10,7 +10,7 @@ const Monthlysub = ({plan, handlChange, handleArr}) => {
 
   return (
     <div>
-      <div className={`sm:flex  w-[125px] h-[160px]  rounded-[10px] p-4 boxShadow hidden ${plan.on ? "bg-Magnolia border-2 border-Purplish " : "transparent" }`}  onClick={()=> {handlChange(plan.id); handleArr(plan.figure)}}   key={plan.id}>
+      <div className={`sm:flex  w-[125px] h-[160px]  rounded-[10px] p-4 boxShadow hidden ${plan.on ? "bg-Magnolia border-2 border-Purplish " : "transparent" }`}  onClick={()=> {handlChange(plan.id); handleArr(plan.figure)}} >
         <div className={`flex flex-col justify-between `}  >
           <div>
             <img src={plan.icon} alt="icon" />
@@ -24,7 +24,7 @@ const Monthlysub = ({plan, handlChange, handleArr}) => {
       </div>
       
       {/* Mobile View */}
-      <div className={`flex  w-[100%] h-[80px] mb-2  rounded-[10px] p-4 boxShadow sm:hidden ${plan.on ? "bg-Magnolia border-2 border-Purplish " : "transparent" }`}  onClick={()=> {handlChange(plan.id); handleArr(plan.figure)}}   key={plan.id}>
+      <div className={`flex  w-[100%] h-[80px] mb-2  rounded-[10px] p-4 boxShadow sm:hidden ${plan.on ? "bg-Magnolia border-2 border-Purplish " : "transparent" }`}  onClick={()=> {handlChange(plan.id); handleArr(plan.figure)}} >
         <div className={`flex justify-between `}  >
           <div className='flex justify-center items-center'>
             <img src={plan.icon} alt="icon" />

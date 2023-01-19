@@ -1,8 +1,8 @@
-import Addons from './Addons';
-import Personal from './Personal';
-import Selectplans from './Selectplans';
-import Summary from './Summary';
-import Thanks from './Thanks';
+import Addons from '../pages/Addons';
+import Personal from '../pages/Personal';
+import Selectplans from '../pages/Selectplans';
+import Summary from '../pages/Summary';
+import Thanks from '../pages/Thanks';
 
 export {
     Addons,

@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { allvalues} from '../constants';
-import Button from './Button';
-import Switch from './Switch';
-import Monthlysub from './Monthlysub';
-import Yearlysub from './Yearlysub';
-import GoBack from './GoBack';
+import Button from '../components/Button';
+import Switch from '../components/Switch';
+import Monthlysub from '../components/Monthlysub';
+import Yearlysub from '../components/Yearlysub';
+import GoBack from '../components/GoBack';
 
 
 
@@ -35,7 +35,6 @@ const Selectplans = () => {
   
   // Monthly plan
   const toggleMonthly = (id) => {
-    
     console.log(id);
 
     setAllValues(items => {
