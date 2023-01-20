@@ -13,9 +13,6 @@ const Personal = () => {
     email: "",
     phone: ""
   })
-
-
-  // var error = ""
   
 
   const handleChange = (event) => {
@@ -28,7 +25,6 @@ const Personal = () => {
     })
   }
 
-  console.log(input);
 
 
 
@@ -49,8 +45,6 @@ const Personal = () => {
 
     
     const newinput = input
-    
-
     if(input.name.length > 0 && input.email.length > 0  && input.phone.length > 0 ) {
       
       localStorage.setItem('newinput', JSON.stringify(newinput))
@@ -59,11 +53,6 @@ const Personal = () => {
 
 
   }
-
-
-
-
-
 
 
   return (

@@ -9,8 +9,6 @@ import GoBack from '../components/GoBack';
 
 
 
-
-
 const Selectplans = () => {
 
 
@@ -95,7 +93,6 @@ const Selectplans = () => {
                   key={plan.id}
                   handleArr={arraypush}
                   plan={plan}
-                  // setAllValues={setAllValues}
                 /> 
 
                 ))
@@ -107,8 +104,7 @@ const Selectplans = () => {
                 <Yearlysub
                   key={plan.id}
                   handleArr={arraypush}
-                  plan={plan}
-                  
+                  plan={plan}                  
                 />                  
 
                 ))
