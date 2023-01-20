@@ -21,8 +21,8 @@ const Selectplans = () => {
 
 
   // Array to save price of the plan
-  const [arr] = useState([])
-  arr.length = 0
+  const [planArr] = useState([])
+  planArr.length = 0
 
 
 
@@ -56,10 +56,10 @@ const Selectplans = () => {
 
 
   // Save the selected element to an Array and Localstorage
-  const arraypush = (figure) => {
-    arr.push(figure)
+  const arraypush = (figure, name, duration, price) => {
+    planArr.push(figure, name, duration, price)
 
-    localStorage.setItem('selectedValue', JSON.stringify(arr))
+    localStorage.setItem('planValue', JSON.stringify(planArr))
   }  
 
 

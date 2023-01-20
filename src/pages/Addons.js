@@ -17,32 +17,33 @@ const Addons = () => {
 
 
   const toggleCheckbox = (id) => {
-    console.log(id);
+    // console.log(id);
 
 
     setAllvalues(items => {
       return items.map(newItems => {
         if(newItems.id === id){
-          return {...newItems, on: !newItems.on , arr: arr.push(!newItems.on, newItems.figure) }
-        } else {
+          return {...newItems, on: !newItems.on  } //, arr: arr.push(!newItems.on, newItems.figure)
+        }  else {
           return newItems
         }
       })
     })
   }
+
+  // else if(arr.includes(false)){
+  //   return {...newItems, rm: arr}
+  // }
   
-  console.log(arr);
-  // if(newItems.on === true){
-  //   return {...newItems, ne: console.log(newItems.on, newItems.figure)}
-  // } 
-
+  
+  
   // Save the selected element to an Array and Localstorage
-  const arraypush = (figure) => {
-
-    // console.log(allValues);
-    // arr.push(figure)
-
-    localStorage.setItem('selectedValue', JSON.stringify(arr))
+  const arraypush = (figure, name, price) => {
+    
+    arr.push(figure, name, price)
+    
+    localStorage.setItem('add-ons', JSON.stringify(arr))
+    console.log(arr);
   }  
   
 

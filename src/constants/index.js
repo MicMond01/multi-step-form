@@ -39,7 +39,8 @@ export const allvalues = [
         name: "Arcade",
         price: "$9/mo",
         figure: 9,
-        on: false
+        on: false,
+        duration: "Monthly"
     },
     {
         id: 2,
@@ -47,7 +48,8 @@ export const allvalues = [
         name: "Advanced",
         price: "$12/mo",
         figure: 12,
-        on: false
+        on: false,
+        duration: "Monthly"
     },
     {
         id: 3,
@@ -55,7 +57,8 @@ export const allvalues = [
         name: "Pro",
         price: "$15/mo",
         figure: 15,
-        on: false
+        on: false,
+        duration: "Monthly"
     },
     {
         id: 4,
@@ -63,7 +66,8 @@ export const allvalues = [
         name: "Arcade",
         price: "$90/mo",
         figure: 90,
-        free: "2 months free"
+        free: "2 months free",
+        duration: "Yearly"
     },
     {
         id: 5,
@@ -71,7 +75,8 @@ export const allvalues = [
         name: "Advanced",
         price: "$120/mo",
         figure: 120,
-        free: "2 months free"
+        free: "2 months free",
+        duration: "Yearly"
     },
     {
         id: 6,
@@ -79,7 +84,8 @@ export const allvalues = [
         name: "Pro",
         price: "$150/mo",
         figure: 150,
-        free: "2 months free"
+        free: "2 months free",
+        duration: "Yearly"
     }
 ]
 
