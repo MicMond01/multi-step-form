@@ -10,7 +10,7 @@ const App = () =>  (
 
   <div className='bg-Magnolia h-screen w-screen flex justify-center items-center '>
 
-    <div className='sm:flex h-3/4 w-[750px] rounded-[10px] boxShadow bg-Alabaster p-4 hidden'>
+    <div className='sm:flex h-3/4 w-[750px] rounded-[10px] relative boxShadow bg-Alabaster p-4 hidden'>
       
       <BrowserRouter>
         

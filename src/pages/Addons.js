@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Button from '../components/Button';
 import GoBack from '../components/GoBack';
 import { useNavigate } from 'react-router-dom';
@@ -9,41 +9,31 @@ import AddExtral from '../components/AddExtral';
 const Addons = () => {
 
   const [allValues, setAllvalues] = useState(addOnValues)
-  const [arr] = useState([])
   const navigate = useNavigate()
 
-  // arr.length = 2
-
-
-
-  const toggleCheckbox = (id) => {
-    // console.log(id);
-
-
-    setAllvalues(items => {
-      return items.map(newItems => {
-        if(newItems.id === id){
-          return {...newItems, on: !newItems.on  } //, arr: arr.push(!newItems.on, newItems.figure)
-        }  else {
-          return newItems
-        }
-      })
-    })
-  }
-
-  // else if(arr.includes(false)){
-  //   return {...newItems, rm: arr}
-  // }
   
+  
+  useEffect(() => {
+
+    const checkValue = localStorage.getItem("checkValue") || null
+    checkValue && setAllvalues(JSON.parse(checkValue))
+    
+
+  },[])  
   
   
   // Save the selected element to an Array and Localstorage
-  const arraypush = (figure, name, price) => {
-    
-    arr.push(figure, name, price)
-    
-    localStorage.setItem('add-ons', JSON.stringify(arr))
-    console.log(arr);
+  const arraypush = (plan) => {
+        
+    const previousData = [...allValues]
+    previousData.map(item => {
+      if(plan.id === item.id){
+        return item.on = !item.on
+      } else {
+        return ''
+      }
+    })
+    setAllvalues(previousData)
   }  
   
 
@@ -62,6 +52,8 @@ const Addons = () => {
     
     allValues.map(item => {
       if(item.on === true){
+        const data = allValues
+        localStorage.setItem("checkValue", JSON.stringify(data))
         return navigate('/Summary')
       } else {
         return ''
@@ -72,7 +64,7 @@ const Addons = () => {
   
   return(    
     <div>
-      <div className='sm:flex hidden justify-center w-[130%]  pl-10 pt-10'>
+      <div className='flex sm:bg-transparent absolute left-[7.5%] top-[15%] sm:left-0 sm:top-0 sm:relative bg-White justify-center w-[85%] h-[550px] sm:h-[100%] sm:w-[100%] rounded-xl  p-4 sm:ml-4 pt-10 sm:pr-0    '>
           <form>
             <div>
               <h3 className=' text-Marine font-bold t text-[25px] '>Pick add-ons</h3>
@@ -82,41 +74,9 @@ const Addons = () => {
               <div className={`flex flex-col justify-between w-[100%] mt-5 cursor-pointer`}>
                 {allValues.map(plan => (
                   <AddExtral 
-                    handlChange={toggleCheckbox}
                     handleArr={arraypush}
                     plan={plan}
                     key={plan.id}
-                  />
-                ))}
-              </div>
-              
-            <div className='flex w-full justify-between mt-7 '>
-                <div onClick={handleBack}>
-                  <GoBack type="button" />
-                </div>
-                <div onClick={handleSubmit}>
-                  <Button  type="button"  /> 
-                </div>
-            </div>
-
-          </form>
-        </div>  
-      
-      {/* Mobile */}
-      <div className='flex justify-center w-[70%] h-[550px] absolute top-[15%] left-[15%] bg-Alabaster rounded-[10px] boxShadow  pt-7 p-3 sm:hidden '>
-          <form>
-            <div>
-              <h3 className=' text-Marine font-bold t text-[25px] '>Pick add-ons</h3>
-              <p className='text-Coolg text-[13px]'>Add-ons help enhance your gaming expirince</p>
-            </div>
-
-              <div className={`flex flex-col justify-between w-[100%] mt-5 cursor-pointer`}>
-                {allValues.map(plan => (
-                  <AddExtral 
-                    handlChange={toggleCheckbox}
-                    handleArr={arraypush}
-                    key={plan.id}
-                    plan={plan}
                   />
                 ))}
               </div>

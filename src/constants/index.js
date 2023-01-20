@@ -64,7 +64,7 @@ export const allvalues = [
         id: 4,
         icon: arcade,
         name: "Arcade",
-        price: "$90/mo",
+        price: "$90/yr",
         figure: 90,
         free: "2 months free",
         duration: "Yearly"
@@ -73,7 +73,7 @@ export const allvalues = [
         id: 5,
         icon: advanced,
         name: "Advanced",
-        price: "$120/mo",
+        price: "$120/yr",
         figure: 120,
         free: "2 months free",
         duration: "Yearly"
@@ -82,7 +82,7 @@ export const allvalues = [
         id: 6,
         icon: pro,
         name: "Pro",
-        price: "$150/mo",
+        price: "$150/yr",
         figure: 150,
         free: "2 months free",
         duration: "Yearly"

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { allvalues} from '../constants';
 import Button from '../components/Button';
@@ -11,12 +11,11 @@ import GoBack from '../components/GoBack';
 
 
 
-
 const Selectplans = () => {
 
 
   const navigate = useNavigate()
-  const [allValues, setAllValues] = useState(allvalues)
+  const [allStateValues, setAllStateValues] = useState(allvalues)
   const [switcher, setSwitcher] = useState(false)
 
 
@@ -32,39 +31,29 @@ const Selectplans = () => {
   }
 
 
+  useEffect(() => {
+    const myPlan = localStorage.getItem("myPlan") || null
+    myPlan && setAllStateValues(JSON.parse(myPlan))
+  },[])  
   
-  // Monthly plan
-  const toggleMonthly = (id) => {
-    console.log(id);
-
-    setAllValues(items => {
-      return items.map(planItem => {
-        if(planItem.id === id){
-          return {...planItem, on: !planItem.on }
-        } else if(planItem.on === true) {
-          return {...planItem, on: false } 
-        } else {
-          return planItem
-        }
-        
-      })
-    })
-
-  }
-
   
-
-
   // Save the selected element to an Array and Localstorage
-  const arraypush = (figure, name, duration, price) => {
-    planArr.push(figure, name, duration, price)
-
-    localStorage.setItem('planValue', JSON.stringify(planArr))
+  const arraypush = (plan) => {
+    const previousData = [...allvalues]
+    previousData.map(item => {
+      if(plan.id === item.id){
+        return item.on = true
+      } else {
+        return item.on = false
+      }
+    })
+    setAllStateValues(previousData)
+        
   }  
 
 
-  const handleBack = (event) => {
 
+  const handleBack = (event) => {
     event.preventDefault()
     navigate('/Personal')
   }
@@ -72,11 +61,12 @@ const Selectplans = () => {
 
   // Submit button
   const  handleSubmit =(event)=> {
-
     event.preventDefault()
     
-    allValues.map(item => {
+    allStateValues.map(item => {
       if(item.on === true){
+        const data = allStateValues
+        localStorage.setItem("myPlan", JSON.stringify(data))
         return navigate('/Addons')
       } else {
         return ''
@@ -92,18 +82,17 @@ const Selectplans = () => {
 
   return (
     <div className=''>
-    <div className='sm:flex justify-center w-full pl-10 pt-10 hidden'>
+      <div className='flex sm:bg-transparent absolute left-[7.5%] top-[15%] sm:left-0 sm:top-0 sm:relative bg-White justify-center w-[85%] h-[550px] sm:h-[100%] sm:w-[100%] rounded-xl  p-4  pt-10 sm:pr-0  sm:ml-4 '>
         <form>
           <div>
             <h3 className=' text-Marine font-bold t text-[25px] '>Personal info</h3>
             <p className='text-Coolg text-[13px]'>You have the option of monthly or yearly billing</p>
           </div>
 
-            <div className={`flex jus justify-between w-[400px] mt-5 cursor-pointer ${switcher ? "hidden" : "flex"}`}>
-              {allValues.slice(0, 3).map(plan => (
+            <div className={`justify-between w-[100%] mt-5 cursor-pointer ${switcher ? "hidden" : "sm:flex flex-col sm:flex-row"}`}>
+              {allStateValues.slice(0, 3).map(plan => (
                 <Monthlysub 
                   key={plan.id}
-                  handlChange={toggleMonthly}
                   handleArr={arraypush}
                   plan={plan}
                   // setAllValues={setAllValues}
@@ -113,11 +102,10 @@ const Selectplans = () => {
               }     
             </div>
             
-            <div className={`jus justify-between w-[400px] mt-5 cursor-pointer ${switcher ? "flex" : "hidden"}`}>
-              {allValues.slice(3, 6).map(plan => (
+            <div className={` justify-between w-[100%] mt-5 cursor-pointer ${switcher ? "sm:flex flex-col sm:flex-row" : "hidden"}`}>
+              {allStateValues.slice(3, 6).map(plan => (
                 <Yearlysub
                   key={plan.id}
-                  handlChange={toggleMonthly}
                   handleArr={arraypush}
                   plan={plan}
                   
@@ -146,66 +134,6 @@ const Selectplans = () => {
           </div>
 
         </form>
-      </div>
-
-
-      {/* Mobile View */}
-    
-    <div className='flex justify-center w-[70%] h-[550px] absolute top-[15%] left-[15%] bg-Alabaster p-5 rounded-[10px] boxShadow  pt-7 sm:hidden'>
-        <div >
-          <div>
-            <h3 className=' text-Marine font-bold text-[25px] '>Personal info</h3>
-            <p className='text-Coolg text-[13px]'>You have the option of monthly or yearly billing</p>
-          </div>
-
-            <div className={`flex flex-col justify-between w-[100%] mt-5 cursor-pointer ${switcher ? "hidden" : "flex"}`}>
-              {allValues.slice(0, 3).map(plan => (
-                <Monthlysub 
-                  key={plan.id}
-                  handlChange={toggleMonthly}
-                  handleArr={arraypush}
-                  plan={plan}
-                  // setAllValues={setAllValues}
-                /> 
-
-                ))
-              }     
-            </div>
-            
-            <div className={`jus justify-between w-[100%] mt-5 cursor-pointer ${switcher ? "flex-col" : "hidden"}`}>
-              {allValues.slice(3, 6).map(plan => (
-                <Yearlysub
-                  key={plan.id}
-                  handlChange={toggleMonthly}
-                  handleArr={arraypush}
-                  plan={plan}
-                  // setAllValues={setAllValues}
-                  
-                />                  
-
-                ))
-              }     
-            </div>
-
-
-            <div className='flex justify-center items-center content-center mt-1 w-full h-[3rem] bg-Lightg'>
-              <Switch 
-                switcher={switcher}
-                setSwitcher={setSwitcher}
-                handleSwitcher={handleSwitcher}
-              />
-            </div>
-
-          <div className='flex w-full justify-between mt-5 '>
-              <div onClick={handleBack}>
-                <GoBack type="button" />
-              </div>
-              <div onClick={handleSubmit}>
-                <Button  type="button"  /> 
-              </div>
-          </div>
-
-        </div>
       </div>
     
     </div>
