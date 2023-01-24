@@ -28,7 +28,7 @@ const Summary = () => {
   const totalPrice = () => {
     let price = 0
     check.map(item => {
-      price = price + item.figure
+      return price = price + item.figure
     })
 
     return price + planValue.figure

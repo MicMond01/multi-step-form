@@ -3,6 +3,7 @@ import { Personal, Addons,  Selectplans, Summary } from './components';
 import Nav from './components/Nav';
 
 import { BrowserRouter ,Routes, Route, Navigate } from 'react-router-dom';
+import Thanks from './pages/Thanks';
 
 
 const App = () =>  (
@@ -28,7 +29,7 @@ const App = () =>  (
           
           <Route exact path='/Summary' element={< Summary />}  />
           
-          {/* <Route exact path='/Thanks' element={< Thanks />}  /> */}
+          <Route exact path='/Thanks' element={< Thanks />}  />
 
         </Routes>
 
@@ -57,7 +58,7 @@ const App = () =>  (
           
           <Route exact path='/Summary' element={< Summary />}  />
           
-          {/* <Route exact path='/Thanks' element={< Thanks />}  /> */}
+          <Route exact path='/Thanks' element={< Thanks />}  />
 
         </Routes>
 
