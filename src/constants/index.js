@@ -27,7 +27,7 @@ export const navigation = [
         id: "4",
         step: "STEP 4",
         title: "SUMMARY",
-        lead: "/Summary"
+        lead: "/"
     }
 ]
 
