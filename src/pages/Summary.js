@@ -8,9 +8,6 @@ const Summary = () => {
   const navigate = useNavigate();
   const [planValue, setPlanValue] = useState({});
   const [check, setCheck] = useState([]);
-  const [content, setContent] = useState(() =>
-    JSON.parse(localStorage.getItem("myPlan"))
-  );
 
   const getSelectedValues = () => {
     const myPlan = localStorage.getItem("myPlan");
@@ -23,6 +20,7 @@ const Summary = () => {
     setCheck(checkValueObj);
   };
 
+  
   const totalPrice = () => {
     let price = 0;
     check.map((item) => {
