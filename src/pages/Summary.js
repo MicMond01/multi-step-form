@@ -1,6 +1,6 @@
 import React from "react";
 import GoBack from "./../components/GoBack";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ConfirmBtn from "./../components/ConfirmBtn";
 import { useEffect, useState } from "react";
 
@@ -20,7 +20,6 @@ const Summary = () => {
     setCheck(checkValueObj);
   };
 
-  
   const totalPrice = () => {
     let price = 0;
     check.map((item) => {
@@ -71,7 +70,7 @@ const Summary = () => {
                       {planValue?.name} ({planValue?.duration})
                     </h4>
                     <p className="text-Coolg cursor-pointer underline">
-                      Change
+                      <Link to="/Selectplans">Change</Link>
                     </p>
                   </div>
                   <div>
